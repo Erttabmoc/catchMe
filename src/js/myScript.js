@@ -5,9 +5,18 @@ window.addEventListener('DOMContentLoaded', function(){
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
 
+    // Taille du canvas
+    canvas.width = 400;
+    canvas.height = 300;
+
     const score = document.getElementById('score');
     const skillsP = document.getElementById('skills');
+    const timeSpan = document.getElementById('temps');
     const restart = document.getElementById('restart');
+    const button = document.getElementById('button');
+    button.addEventListener('click', function(){
+        open("../public/misc/20201110_CV.pdf", "MyResume");
+    });
 
     let startTime = false;
     let time = 0;
@@ -48,15 +57,13 @@ window.addEventListener('DOMContentLoaded', function(){
     function chrono(){
         if(startTime){
             time += 1;
-            score.innerHTML = `Vous avez tenu ${time/100}s`;
+            score.innerHTML = `Vous avez tenu <br> ${time/100}s`;
         }
         animate();
         showSkills();
     }
 
-    // Taille du canvas
-    canvas.width = 400;
-    canvas.height = 300;
+
 
     var Ennemy = function() {
         this.position = {
